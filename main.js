@@ -32,3 +32,7 @@ function composeFolder(path){
     });
   });
 }
+var app = angular.module('app', []);
+app.controller("page", function($scope) {
+  $scope.root = root;
+});
