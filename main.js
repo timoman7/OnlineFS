@@ -35,5 +35,6 @@ function composeFolder(path){
 composeFolder([]);
 var app = angular.module('app', []);
 app.controller("page", function($scope) {
-  $scope.root = root;
+  window.myScope = $scope;
+  $scope.root = Object.assign({}, root);
 });

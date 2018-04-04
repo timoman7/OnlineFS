@@ -21,7 +21,17 @@
   </head>
   <body ng-app="app" ng-controller="page">
     <div>
-      <p ng-repeat="file in root">{{file.name}}</p>
+      <li ng-repeat="(folder, file) in root">
+        <p ng-if="file.name != undefined">{{file.name}}</p>
+        <div ng-if="file.length != undefined">
+          {{folder}}
+          <ul>
+            <li ng-repeat="(_folder, _file) in file">
+              {{_folder}}: {{_file}}
+            </li>
+          </ul>
+        </div>
+      </li>
     </div>
   </body>
 </html>
