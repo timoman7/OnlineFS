@@ -32,6 +32,7 @@ function composeFolder(path){
     });
   });
 }
+composeFolder([]);
 var app = angular.module('app', []);
 app.controller("page", function($scope) {
   $scope.root = root;
