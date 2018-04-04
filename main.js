@@ -17,21 +17,21 @@ Object.defineProperty(Object.prototype, 'downPath', {
   writable: false,
   enumerable: false
 });
-// function composeFolder(path){
-//   getStructure(path,'files.prn',function(t){
-//     let arr = t.split('\n').filter(o=>o!='');
-//     arr.forEach((f)=>{
-//       root.downPath(...path).push({name: f});
-//     });
-//   });
-//   getStructure(path,'folders.prn',function(t){
-//     let arr = t.split('\n').filter(o=>o!='');
-//     arr.forEach((f)=>{
-//       root.downPath(...path)[f] = [];
-//       composeFolder(path.concat(f));
-//     });
-//   });
-// }
+function composeFolder(path){
+  getStructure(path,'files.prn',function(t){
+    let arr = t.split('\n').filter(o=>o!='');
+    arr.forEach((f)=>{
+      root.downPath(...path).push({name: f});
+    });
+  });
+  getStructure(path,'folders.prn',function(t){
+    let arr = t.split('\n').filter(o=>o!='');
+    arr.forEach((f)=>{
+      root.downPath(...path)[f] = [];
+      composeFolder(path.concat(f));
+    });
+  });
+}
 var app = angular.module('app', []);
 app.controller("page", function($scope) {
   $scope.root = root;
