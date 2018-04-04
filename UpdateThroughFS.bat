@@ -6,6 +6,6 @@ echo Writing in: %1
 (dir /A:-D /B | find /V ".prn") > files.prn
 for /d %%i in (%1*) do (
 cd %%i
-call %_home_%\UpdateThroughSD.bat .\ %_home_%
+call %_home_%\UpdateThroughFS.bat .\ %_home_%
 cd %_home_%
 )
