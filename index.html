@@ -17,22 +17,19 @@
         color: #e7e7e7;
       }
     </style>
-    <title>School Stuff</title>
+    <title>Online File System</title>
   </head>
   <body ng-app="app" ng-controller="page">
     <div>
-      <li ng-repeat="(folder, file) in root">
-        <p ng-if="file.name != undefined">{{file.name}}</p>
-        <div ng-if="file.length != undefined">
-          {{folder}}
-          {{file}}
-          <ul>
-            <li ng-repeat="_file in file">
-              {{_file}}
-            </li>
-          </ul>
-        </div>
-      </li>
+      <ul>
+        <li ng-repeat="(key, value) in root() track by $index">
+          <!-- <div ng-init="" ng-include="'folderTemplate.html'"></div> -->
+          <p ng-if="isObject(value)">{{value.name}}</p>
+          <div ng-if="isArray(value)">
+            <div ng-init="parent = value" ng-include="'folderTemplate.html'"></div>
+          </div>
+        </li>
+      </ul>
     </div>
   </body>
 </html>

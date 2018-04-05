@@ -1,0 +1,9 @@
+<ul>
+  <li ng-repeat="(key, value) in parent track by $index">
+    <!-- <div ng-init="" ng-include="'folderTemplate.html'"></div> -->
+    <p ng-if="isObject(value)">{{value.name}}</p>
+    <div ng-if="isArray(value)">
+      <div ng-init="parent = value" ng-include="'folderTemplate.html'"></div>
+    </div>
+  </li>
+</ul>
