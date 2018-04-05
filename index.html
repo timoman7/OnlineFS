@@ -25,9 +25,10 @@
         <p ng-if="file.name != undefined">{{file.name}}</p>
         <div ng-if="file.length != undefined">
           {{folder}}
+          {{file}}
           <ul>
-            <li ng-repeat="(_folder, _file) in file">
-              {{_folder}}: {{_file}}
+            <li ng-repeat="_file in file">
+              {{_file}}
             </li>
           </ul>
         </div>
