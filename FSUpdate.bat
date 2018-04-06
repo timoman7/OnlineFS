@@ -1,0 +1,1 @@
+call UpdateThroughFS.bat .\ %cd%
