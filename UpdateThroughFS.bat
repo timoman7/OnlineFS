@@ -2,7 +2,7 @@
 set _home_=%2
 echo Working from: %_home_%
 echo Writing in: %1
-(dir /A:D /B | find /V ".prn") > folders.prn
+(((dir /A:D /B | find /V ".prn") | find /V "_EXCLUDE") | find /V ".git") > folders.prn
 (dir /A:-D /B | find /V ".prn") > files.prn
 for /d %%i in (%1*) do (
 cd %%i
