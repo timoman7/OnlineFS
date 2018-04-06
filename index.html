@@ -20,13 +20,15 @@
     <title>Online File System</title>
   </head>
   <body ng-app="app" ng-controller="page">
-    <div>
+    <div ng-init="parent = flatten(root); path = '.'">
+      <h4>root</h4>
       <ul>
-        <li ng-repeat="(key, value) in root() track by $index">
+        <li ng-repeat="(key, value) in parent track by $index">
           <!-- <div ng-init="" ng-include="'folderTemplate.html'"></div> -->
-          <p ng-if="isObject(value)">{{value.name}}</p>
+          <a ng-if="isObject(value)" ng-init="fileLocation = concat(path, value.name).join('/')" href="{{fileLocation}}">{{value.name}}</a>
           <div ng-if="isArray(value)">
-            <div ng-init="parent = value" ng-include="'folderTemplate.html'"></div>
+            <h4>{{key}}</h4>
+            <div ng-init="parent = value; path = concat(path, key)" ng-include="'folderTemplate.html'"></div>
           </div>
         </li>
       </ul>

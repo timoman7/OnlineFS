@@ -1,9 +1,9 @@
 <ul>
-  <li ng-repeat="(key, value) in parent track by $index">
-    <!-- <div ng-init="" ng-include="'folderTemplate.html'"></div> -->
-    <p ng-if="isObject(value)">{{value.name}}</p>
+  <li ng-repeat="(key, value) in flatten(parent) track by $index">
+    <a ng-if="isObject(value)" ng-init="fileLocation = concat(path, value.name).join('/')" href="{{fileLocation}}">{{value.name}}</a>
     <div ng-if="isArray(value)">
-      <div ng-init="parent = value" ng-include="'folderTemplate.html'"></div>
+      <h4>{{key}}</h4>
+      <div ng-init="parent = value; path = concat(path, key)" ng-include="'folderTemplate.html'"></div>
     </div>
   </li>
 </ul>
